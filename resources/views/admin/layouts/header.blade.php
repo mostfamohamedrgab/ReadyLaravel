@@ -6,19 +6,19 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.4 -->
-    <link rel="stylesheet" href="{{ asset('admin/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/bootstrap/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('admin/dist/css/all.css')}}">
+    <link rel="stylesheet" href="{{asset('public/admin/dist/css/all.css')}}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{asset('admin/dist/css/ionicons.css')}}">
+    <link rel="stylesheet" href="{{asset('public/admin/dist/css/ionicons.css')}}">
     
     <!-- jvectormap -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('admin/dist/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{ asset('admin/dist/css/skins/_all-skins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/dist/css/skins/_all-skins.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,6 +32,10 @@
       }
       .text-r {
         text-align: right  !important
+      }
+      
+      input , select , option {
+        text-align: right !important
       }
 
       table {
@@ -51,6 +55,15 @@
         margin-top:10px;
         width:95%;
         text-align: right !important 
+      }
+
+      .content-header  button[data-target='#exampleModal']{
+        display: inline-block !important;
+        text-align: right !important;
+      }
+      button[data-target='#exampleModal']
+      {
+        margin-bottom: 15px;
       }
     </style>
     @stack('css')

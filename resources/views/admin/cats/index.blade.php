@@ -5,15 +5,15 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1 >
-            لوحه التحكم
+            لوحة التحكم 
             / 
-            الاعضاء
+            الاقسام
           </h1>
 
           <hr style="border-color:#aaa"/>
           <button style="display:block;text-align:right" type="button" class=" btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            اضافه عضو
-          <i class="fa fa-users"></i>
+           	اضافة قسم
+            <i class="fa fa-th-list"></i>
           </button>
           </section>
           @include('layouts.msgs')
@@ -25,38 +25,26 @@
         <tr >
           <td>#</td>
           <td>الاسم</td>
-          <td>الايميل</td>
-          <td>
-            حاله الحساب
-          </td>
           <td>اجراء<td>
         </tr>
       </thead>
       <tbody>
-        @foreach($users as $user)
+        @foreach($cats as $cat)
         <tr>
-          <td>{{$user->id}}</td>
-          <td>{{$user->name}}</td>
-          <td>{{$user->email}}</td>
-          <td>
-            @if($user->email_verified_at)
-              <i class="fa fa-check text-success"></i>
-            @else
-              <i class="fa fa-close text-danger"></i>
-            @endif
-          </td>
+          <td>{{$cat->id}}</td>
+          <td>{{$cat->name}}</td>
 
 
           <td>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-{{$user->id}}">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-{{$cat->id}}">
               تعديل <i class="fa fa-edit"></i>
             </button>
 
 
           <form class="delete"
           style="display:inline-block"
-          action="{{ route('admin.Users.destroy',$user->id) }}" method="post">
+          action="{{ route('admin.Sections.destroy',$cat->id) }}" method="post">
             @csrf
             @method('DELETE')
             <input type="submit" class="btn btn-danger" value="حذف" />
@@ -67,34 +55,24 @@
 
 
         <!--edit  Modal -->
-      <div class="modal fade" id="edit-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="edit-{{$cat->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">تعديل {{$user->name}}</h5>
+              <h5 class="modal-title" id="exampleModalLabel">تعديل {{$cat->name}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
 
-              <form method="post" action="{{route('admin.Users.update',$user->id)}}">
+              <form method="post" action="{{route('admin.Sections.update',$cat->id)}}">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
                   <label>الاسم</label>
-                  <input type="text" class="form-control" required name="name" value="{{ $user->name }}">
+                  <input type="text" class="form-control" required name="name" value="{{ $cat->name }}">
                 </div>
-                <div class="form-group">
-                  <label>الايميل</label>
-                  <input type="email" class="form-control"  value="{{ $user->email }}" required name="email">
-                </div>
-
-                <div class="form-group">
-                  <label>كلمه السر</label>
-                  <input type="password" class="form-control"  name="password">
-                </div>
-
 
                 <button type="submit" class="btn btn-primary">تعديل</button>
           </form>
@@ -114,30 +92,22 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">اضافه عضو جديد</h5>
+          <h5 class="modal-title" id="exampleModalLabel">
+          	أضافة قسم جيد
+          </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
 
-          <form method="post" action="{{route('admin.Users.store')}}">
+          <form method="post" action="{{route('admin.Sections.store')}}">
             @csrf
             <div class="form-group">
               <label>الاسم</label>
               <input type="text" class="form-control" required name="name" value="{{old('name')}}">
             </div>
-            <div class="form-group">
-              <label>الايميل</label>
-              <input type="email" class="form-control"  value="{{old('email')}}" required name="email">
-            </div>
-
-            <div class="form-group">
-              <label>كلمه السر</label>
-              <input type="password" class="form-control" required name="password">
-            </div>
-
-
+        
             <button type="submit" class="btn btn-primary">حفظ</button>
       </form>
 
@@ -151,9 +121,6 @@
   <style type="text/css">
       form {
         text-align: right !important
-      }
-      form input {
-        text-align: right !important        
       }
   </style>
 @endpush

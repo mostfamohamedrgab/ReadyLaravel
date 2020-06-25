@@ -8,16 +8,24 @@ Route::post('Dashboard/Login','AdminAuthController@Login')->name('admin.login');
 Route::group([
               'prefix' => 'Dashboard',
               'as' => 'admin.',
-              'middleware' => 'auth:admin',
+              'middleware' => 'AdminAuth',
             ], function (){
 
-  // Defult Root Path 
+  // Defult Root Path
   Route::view('/','admin.index');
   // Admins Controller
-  Route::resource('Admins','AdminsController');	
+  Route::resource('Admins','AdminsController');
   // users
-  Route::resource('Users','UsersController');	
-  // News
+  Route::resource('Users','UsersController');
+  // Teams
+  Route::resource('Teams','TeamsController');
+  // Sections => Model [Cat]
+  Route::resource('Sections','CatController');
+  // Challenges
+  Route::resource('Challenges','ChallengesController');
+  // Pages
+   Route::resource('Pages','PagesController');
+   // News
    Route::resource('News','NewsController');
    // Contacts
   Route::get('Contacts','ContactsController@index')->name('Contact');

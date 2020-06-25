@@ -5,7 +5,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+        <img src="{{ asset('public/admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p>{{ auth('admin')->user()->name }} </p>
@@ -34,6 +34,50 @@
     </li>
 
     <li>
+      <a href="{{ route('admin.Teams.index') }}">
+        <i class="fa fa-steam-square"></i> <span>
+        الفرق
+        </span>
+        <small class="label pull-right bg-yellow">
+          {{ App\Team::count() }}
+        </small>
+      </a>
+    </li>
+
+    <li>
+      <a href="{{ route('admin.Sections.index') }}">
+        <i class="fa fa-th-list"></i> <span>
+        الاقسام
+        </span>
+        <small class="label pull-right bg-yellow">
+          {{ App\Cat::count() }}
+        </small>
+      </a>
+    </li>
+
+    <li>
+      <a href="{{ route('admin.Challenges.index') }}">
+        <i class="fa fa-bar-chart-o"></i> <span>
+        التحديات
+        </span>
+        <small class="label pull-right bg-yellow">
+          {{ App\Challenge::count() }}
+        </small>
+      </a>
+    </li>
+
+    <li>
+      <a href="{{ route('admin.Pages.index') }}">
+        <i class="fa fa-sitemap"></i> <span>
+         الصحفات
+        </span>
+        <small class="label pull-right bg-yellow">
+          {{ App\Page::count() }}
+        </small>
+      </a>
+    </li>
+
+    <li>
       <a href="{{ route('admin.News.index') }}">
         <i class="fa fa-newspaper-o"></i> <span>الاخبار</span>
         <small class="label pull-right bg-yellow">
@@ -43,7 +87,7 @@
       </a>
     </li>
 
-   <li>   
+   <li>
       <a href="{{ route('admin.Contact') }}">
         <i class="fa fa-envelope-o"></i> <span>الرسائل</span>
         <small class="label pull-right bg-yellow">

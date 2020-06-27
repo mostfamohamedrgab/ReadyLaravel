@@ -18,4 +18,11 @@ class Team extends Model
       ->withpivot('approved');
     }
 
+    public function ApprovedUsers(){
+      return
+      $this->belongsToMany(User::class,TeamUser::class,'team_id','user_id')
+      ->withpivot('approved')
+      ->where('approved',1);
+    }
+
 }

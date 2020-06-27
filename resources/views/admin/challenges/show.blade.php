@@ -16,45 +16,26 @@
         <!-- Main content -->
 <section class="content">
 
-      <div class="text-r modal-content">
-
-        <div class="modal-body">
-          <h4>اسم التحدي </h4>
-          <h5>{{$challenge->name}}.</h5>
-          <hr />
-          <h4>
-            القسم
-          </h4>
-          <h5>{{$challenge->cat}}.</h5>
-          <hr />
-          <h4>المحتوي</h4>
-          {!! $challenge->content !!}
-          <hr />
-          @if($challenge->file)
-          <h4>الملف</h4>
-          <a href="{{ asset('storage/file/'.$challenge->file) }}">
-              الملف
-          </a>
-          <hr />
-          @endif
-           <h4>
-            القيمه الصحيحه
-          </h4>
-          <h5>{{$challenge->value}}.</h5>
-          <hr />
-           <h4>
-            النقاط
-          </h4>
-          <h5>{{$challenge->points}}.</h5>
-          <hr />
-           <h4>
-          تاريخ الانتهاء
-          </h4>
-          <h5>{{$challenge->end_at}}.</h5>
-          <hr />
-        </div>
-
-      </div>
-
+  <table class="table">
+    <thead>
+      <tr >
+        <td>#</td>
+        <td>العضو</td>
+        <td>منذ</td>
+        <td>تاريخ الحل</td>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($sloves as $slove)
+      <tr>
+        <td>{{$slove->id}}</td>
+        <td>{{$slove->user->name}}</td>
+        <td>{{$slove->created_at->diffForHumans() }}</td>
+        <td>{{$slove->created_at }}</td>
+      </tr>
+      @endforeach
+      </tbody>
+    </table>
+    <hr style="border-color:#fff"/>
 
 @endsection

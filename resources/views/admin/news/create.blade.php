@@ -23,14 +23,14 @@
 
     <div class="form-group">
       <label >صوره الخبر
-        <img id="blah" src="{{asset('imgs/logo.png')}}"
+        <img id="blah" src="{{asset('public/imgs/logo.png')}}"
             style="width:70px;height:70px;border-radius:50%;margin:10px" />
       </label>
       <input id="imgInp" type="file" accept="image/*" class="form-control" name="image" required>
     </div>
 
-   
-    
+
+
     <div class="form-group">
       <label >وصف قصير <small class="text-info">| اختياري</small></label>
       <input type="text" class="form-control" name="description"  value="{{old('description')}}">

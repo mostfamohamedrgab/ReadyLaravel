@@ -3,13 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-Use Carbon\Carbon;
 
 class Challenge extends Model
 {
     protected $guarded = [];
 
-    public function getEndAtAttribute($value) {
-        return Carbon::parse($value)->format('d-m-Y');
+    public function sloves(){
+      return $this->hasMany(Slove::class);
     }
+
+    public function cat(){
+      return $this->belongsTo(Cat::class);
+    }
+
 }

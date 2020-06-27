@@ -35,7 +35,7 @@
                 <td>{{$new->description}}</td>
                 <td>
                   <img style="margin:auto;display:block;width:50px;height:50px;"
-                    src="{{asset('storage/imgs/'.$new->image)}}" />
+                    src="{{asset('public/storage/imgs/'.$new->image)}}" />
                 </td>
                 <td>{{$new->date}}</td>
                 <td>

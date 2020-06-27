@@ -26,6 +26,7 @@
                 <td>#</td>
                 <td>  الاسم</td>
                 <td>  القسم  </td>
+                <td>  عدد المجتازين  </td>
                 <td>اضيف في  </td>
                 <td>اجراء<td>
 
@@ -36,7 +37,8 @@
               <tr>
                 <td>{{$challenge->id}}</td>
                 <td>{{$challenge->name}}</td>
-                <td>{{$challenge->cat}}</td>
+                <td>{{$challenge->cat->name}}</td>
+                <td>{{$challenge->sloves->count() }}</td>
 
                 <td>{{$challenge->created_at->diffForHumans() }}</td>
                 <td>

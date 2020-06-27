@@ -1,0 +1,14 @@
+.navbar.navbar-expand-md {
+  margin-bottom: 0 !important;
+}
+.py-4 {
+  padding-top:0 !important
+}
+
+/** start sliders**/
+.slider {
+  background: url('https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size:cover;
+  background-position: 100%;
+}
+/** end sliders**/

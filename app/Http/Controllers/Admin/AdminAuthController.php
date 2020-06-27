@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 class AdminAuthController extends Controller
 {
+    public function __construct(){
+      $this->middleware('AdminAuth');
+    }
+
     // get view form
     public function showForm()
     {

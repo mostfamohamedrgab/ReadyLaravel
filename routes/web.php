@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
+Route::get('/','HomeController@index');
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Challanges
+Route::get('Challenges','ChallengesController@show')->name('challenges.view');

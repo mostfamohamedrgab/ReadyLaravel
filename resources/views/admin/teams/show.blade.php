@@ -27,16 +27,27 @@
     </thead>
     <tbody>
 
+
       @foreach($team->users as $user)
       <tr>
         <td>{{$user->id}}</td>
         <td>{{$user->name}}</td>
         <td>{{$user->points}}</td>
         <td>
-          @if($user->pivot->approved)
-          <i class="fa fa-check text-success"></i>
+          @if($team->creator == $user->id)
+            <i
+            title="مسؤول"
+            class="fa fa-shield text-info"></i>
           @else
-          <i class="fa fa-close text-danger"></i>
+            @if($user->pivot->approved)
+            <i
+            title="نشط"
+            class="fa fa-check text-success"></i>
+            @else
+            <i
+            title="بانتظار الموافقة"
+            class="fa fa-close text-danger"></i>
+            @endif
           @endif
         </td>
       </tr>
@@ -66,10 +77,10 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: {!! $team->users->pluck('name') !!},
+        labels: {!! $team->ApprovedUsers->pluck('name') !!},
         datasets: [{
             label: '# Points ' + {!! $team->users->sum('points') !!},
-            data: {!! $team->users->pluck('points') !!},
+            data: {!! $team->ApprovedUsers->pluck('points') !!},
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

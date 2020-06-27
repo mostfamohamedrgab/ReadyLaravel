@@ -24,11 +24,11 @@
           <hr />
           <h4>صوره الخبر</h4>
           <h5>
-            <img src="{{asset('storage/imgs/'.$new->image)}}"
+            <img src="{{asset('public/storage/imgs/'.$new->image)}}"
               style="width:60px;height:60px;border-radius:50%" />
             .</h5>
           <hr />
-          
+
           <h4>وصف قصير</h4>
           <h5>{{$new->description}}.</h5>
           <hr />

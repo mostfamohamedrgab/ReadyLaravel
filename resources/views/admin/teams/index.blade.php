@@ -38,7 +38,7 @@
           <td>{{$team->name}}</td>
           <td>{{$team->theCreator->name}}</td>
           <td>
-            {{$team->users->sum('points')}}
+            {{$team->ApprovedUsers->sum('points')}}
           </td>
           <td>{{$team->created_at->diffForHumans()}}</td>
 

@@ -8,11 +8,11 @@ Route::post('Dashboard/Login','AdminAuthController@Login')->name('admin.login');
 Route::group([
               'prefix' => 'Dashboard',
               'as' => 'admin.',
-              'middleware' => 'AdminAuth',
+              'middleware' => 'auth:admin',
             ], function (){
 
   // Defult Root Path
-  Route::view('/','admin.index');
+  Route::get('/','DashboardController@index');
   // Admins Controller
   Route::resource('Admins','AdminsController');
   // users

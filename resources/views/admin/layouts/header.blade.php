@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('public/admin/dist/css/all.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('public/admin/dist/css/ionicons.css')}}">
-    
+
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{ asset('public/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
     <!-- Theme style -->
@@ -28,12 +28,12 @@
     <![endif]-->
     <style>
       h1, h2 ,h3 ,h4 ,h5 ,h6 {
-        text-align: right !important 
+        text-align: right !important
       }
       .text-r {
         text-align: right  !important
       }
-      
+
       input , select , option {
         text-align: right !important
       }
@@ -42,7 +42,11 @@
         padding: 10px;
         direction: rtl;
         background:#fff;
-        box-shadow: 1px 1px 2px #eee,-1px -1px 2px #eee;
+        box-shadow: 1px 1px 2px #ddd,-1px -1px 2px #ddd;
+      }
+      .table:hover {
+        transition: all .3s ease;
+        box-shadow: 3px 3px 20px #ddd,-3px -3px 20px #ddd;
       }
       table thead td {
         font-weight: bolder;
@@ -54,13 +58,18 @@
         margin:auto;
         margin-top:10px;
         width:95%;
-        text-align: right !important 
+        text-align: right !important
+      }
+
+      .content-header{
+        text-align: right;
       }
 
       .content-header  button[data-target='#exampleModal']{
         display: inline-block !important;
         text-align: right !important;
       }
+
       button[data-target='#exampleModal']
       {
         margin-bottom: 15px;

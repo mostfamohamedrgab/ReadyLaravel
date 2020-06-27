@@ -33,7 +33,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">
-                  لديك 
+                  لديك
                   {{ count($msgs) }}
 
                   رسائل
@@ -67,7 +67,7 @@
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                    <img src="{{ asset('public/admin/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                     <p>
                       <small>1/1/2012</small>
                     </p>

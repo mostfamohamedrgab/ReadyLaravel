@@ -29,11 +29,11 @@
 
     <div class="form-group">
       <label >القسم</label>
-      <select class="form-control" required name="cat">
+      <select class="form-control" required name="cat_id">
         @foreach($cats as $cat)
         <option
-        value="{{$cat->name}}"
-        {{ old('cat') == $cat->name ? 'selcted' : ''}}
+        value="{{$cat->id}}"
+        {{ old('cat') == $cat->id ? 'selcted' : ''}}
         >{{ $cat->name }}</option>
         @endforeach
       </select>

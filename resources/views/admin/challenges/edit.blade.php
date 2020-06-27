@@ -30,11 +30,11 @@
 
     <div class="form-group">
       <label >القسم</label>
-      <select class="form-control" required name="cat">
+      <select class="form-control" required name="cat_id">
         @foreach($cats as $cat)
         <option
-        value="{{$cat->name}}"
-        {{ $challenge->cat == $cat->name ? 'selected' : ''}}
+        value="{{$cat->id}}"
+        {{ $challenge->cat->id == $cat->id ? 'selected' : ''}}
         >{{ $cat->name }}</option>
         @endforeach
       </select>

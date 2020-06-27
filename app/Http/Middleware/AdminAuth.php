@@ -14,12 +14,12 @@ class AdminAuth
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
+    {
 
-        if(auth('admin')->user())
+        if(! auth('admin')->user())
         {
             return $next($request);
         }
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.');
     }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Challenge;
 use App\Cat;
+use App\Slove;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Storage;
+
 
 class ChallengesController extends Controller
 {
@@ -43,7 +45,7 @@ class ChallengesController extends Controller
 
         $data = $request->validate([
             'name' => 'required|min:2|max:255',
-            'cat' => 'required|min:2|max:255',
+            'cat_id' => 'required',
             'content' => 'required|min:2',
             'value' => 'required|min:1',
             'points' => 'required|min:1',
@@ -71,7 +73,9 @@ class ChallengesController extends Controller
     public function show($id)
     {
         $challenge = Challenge::findOrFail($id);
-        return view('admin.challenges.show', compact('challenge'));
+        $sloves = Slove::where('challenge_id',$challenge->id)->get();
+
+        return view('admin.challenges.show', compact('sloves','challenge'));
     }
 
     /**
@@ -100,7 +104,7 @@ class ChallengesController extends Controller
 
         $data = $request->validate([
             'name' => 'required|min:2|max:255',
-            'cat' => 'required|min:2|max:255',
+            'cat_id' => 'required',
             'content' => 'required|min:2',
             'value' => 'required|min:1',
             'points' => 'required|min:1',

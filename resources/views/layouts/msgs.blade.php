@@ -8,6 +8,10 @@
   <div class="alert alert-danger text-center">{{ session()->get('error') }}</div>
 @endif
 
+@if( session()->has('danger') )
+  <div class="alert alert-danger text-center">{{ session()->get('danger') }}</div>
+@endif
+
 @if( session()->has('info') )
   <div class="alert alert-info text-center">{{ session()->get('info') }}</div>
 @endif

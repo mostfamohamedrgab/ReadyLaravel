@@ -17,3 +17,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Challanges
 Route::get('Challenges','ChallengesController@show')->name('challenges.view');
+// USERS
+Route::resource('Users','UsersController');
+// Teams
+Route::get('Teams','TeamsController@index')->name('Teams');
+Route::get('Teams/{Team}','TeamsController@show')->name('showTeam');
+/*********************************************/
+// Protected By [Auth] MiddleWare  ***********/
+/*********************************************/
+Route::group(['middleware' => 'auth:web'],function (){
+  // USER
+  Route::resource('User','UserController');
+  // Challenges
+  Route::post('Challenges','ChallengesController@slove')->name('challenges.slove');
+  // Teams
+  Route::resource('Team','TeamController');
+  // Join Teams
+  Route::get('joinTeam/{id}','JoinTeamController@join')->name('joinTeam');
+});

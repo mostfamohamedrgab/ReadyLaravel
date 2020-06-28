@@ -37,7 +37,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function slove(){
+    public function challangesSloved(){
+      return $this->belongsToMany(
+        Challenge::class,
+        Slove::class,
+      );
+    }
+
+    public function approvedTeams(){
+      return $this->belongsToMany(
+        Team::class,
+        TeamUser::class
+      )->withpivot('approved')
+      ->where('approved',1);
+    }
+
+    public function Teams(){
+      return $this->belongsToMany(
+        Team::class,
+        TeamUser::class
+      )->withpivot('approved');
+    }
+    // the team that the user In
+    public function TeamsJoined(){
+      return $this->hasMany(TeamUser::class);
+    }
+
+    public function sloves(){
       return $this->hasMany(Slove::class);
     }
 }

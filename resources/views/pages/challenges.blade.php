@@ -7,12 +7,15 @@
 <div class="container">
   <h2 class="text-center">التحديات <i class="fas fa-tasks"></i>
   </h2>
+
   <hr />
   <!-- start taks -->
   @foreach($cats as $cat)
   <div class="row cat-container">
     <h2 class="cat-title">{{$cat->name}}</h2>
     @foreach($cat->challenges as $challenge)
+
+
     <div class="col-md-3 col-sm-12">
       <a class="item-link" href="#" data-toggle="modal" data-target="#Modal-{{$challenge->id}}">
         <div class="item">
@@ -44,17 +47,33 @@
               </a>
               <hr />
             @endif
-            <form action="#" method="post">
-              @csrf
-              <div class="form-group">
-                <label for="value">القيمة الصحيحة</label>
-                <input type="text" name="value" required class="form-control" id="value">
-              </div>
           </div>
           <div class="modal-footer">
+          <form action="{{ route('challenges.slove') }}" method="post">
+            @csrf
+            <div class="form-group">
+              <label for="value">القيمة الصحيحة</label>
+              <input type="text" name="value" required="required" class="form-control" id="value">
+            </div>
+            <!--- check if user login -->
             @if(auth()->user())
+              <!-- check if user verification -->
               @if(auth()->user()->email_verified_at)
-              <button type="button" class="btn btn-primary">ارسال</button>
+
+                <!-- check if user pass it before -->
+                @php
+                  $UserSloved = auth()->user()->sloves->pluck('challenge_id');
+                @endphp
+                @if( ! in_array($challenge->id,$UserSloved->toArray()) )
+                <input type="hidden" name="challenge_id" value="{{$challenge->id}}" />
+                <input type="submit" class="btn btn-info" value="ارسال" />
+                @else
+                  <p class="text-info text-center">
+                    <strong>ملحوظه</strong>
+                    لقد قمت بحل التحدي سابقا
+                  </p>
+                @endif
+
               @else
               <a class="d-block" href="{{ route('verification.notice') }}">
                 يجب عليك تاكيد الحساب اولا

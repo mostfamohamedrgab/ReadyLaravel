@@ -21,6 +21,17 @@
         <div class="item">
           <h4>{{$challenge->name}}</h4>
           <p>{{$challenge->points}}</p>
+          <hr />
+          @if($challenge->type == 'teams')
+            <i class="fa fa-object-group"></i>
+            فرق
+          @elseif($challenge->type == 'users')
+            <i class="fa fa-users"></i>
+            اعضاء
+          @else
+            <i class="fa fa-globe"></i>
+            عام
+          @endif
         </div>
       </a>
     </div>

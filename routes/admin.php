@@ -19,6 +19,8 @@ Route::group([
   Route::resource('Users','UsersController');
   // Teams
   Route::resource('Teams','TeamsController');
+  Route::get('Team/Remove/{user}/{team}','TeamsController@remove')->name('team.remove');
+  Route::get('Team/Approve/{user}/{team}','TeamsController@approve')->name('team.approve');
   // Sections => Model [Cat]
   Route::resource('Sections','CatController');
   // Challenges

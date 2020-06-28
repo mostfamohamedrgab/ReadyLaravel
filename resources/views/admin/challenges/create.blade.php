@@ -29,11 +29,11 @@
 
     <div class="form-group">
       <label >القسم</label>
-      <select class="form-control" required name="cat_id">
+      <select style="text-align:right;direction:rtl" class="form-control" required name="cat_id">
         @foreach($cats as $cat)
         <option
         value="{{$cat->id}}"
-        {{ old('cat') == $cat->id ? 'selcted' : ''}}
+        {{ old('cat') == $cat->id ? 'selected' : ''}}
         >{{ $cat->name }}</option>
         @endforeach
       </select>
@@ -47,6 +47,25 @@
               language: 'ar'
             });
         </script>
+    </div>
+
+    <div class="form-group">
+      <label >نوع التحدي</label>
+      <select style="text-align:right;direction:rtl" class="form-control" required name="type">
+        @php
+          $types = [
+            'teams' => 'فرق',
+            'users' => 'الاعضاء',
+            'public' => 'عام'
+          ]
+        @endphp
+        @foreach($types as $value => $type)
+        <option style="text-align:right"
+        value="{{$value}}"
+        {{$value == old('type') ? 'selected' : ''}}
+        >{{$type}}</option>
+        @endforeach
+      </select>
     </div>
 
     <div class="form-group">

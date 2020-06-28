@@ -18,11 +18,12 @@ class CreateChallengesTable extends Migration
 
             $table->string('name');
             $table->longText('content');
+            $table->enum('type',['teams','users','public']);
             $table->string('value');
             $table->integer('points');
             $table->string('file')->nullable();
             $table->date('end_at');
-            // The Cat Relation 
+            // The Cat Relation
             $table->unsignedBigInteger('cat_id');
             $table->foreign('cat_id')->references('id')
             ->on('cats')

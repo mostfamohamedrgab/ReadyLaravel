@@ -117,6 +117,45 @@ class TeamsController extends Controller
         return back()->withSuccess('تم');
     }
 
+    // Aprove UsersStastus
+    // Status => 1 : approve , 0 : delete
+    public function approve($user,$team)
+    {
+      $teamCreator = Team::select('creator')->find($team);
+
+      if($user == $teamCreator)
+      {
+        return back()->with('danger','لايمكن تغير حالة الادمن');
+      }
+
+      TeamUser::where('user_id',$user)
+                              ->where('team_id',$team)
+                              ->update([
+                                'approved' => 1
+                              ]);
+
+      return back()->withSuccess('تم');
+    }
+    // remove UsersStastus
+    // Status => 1 : approve , 0 : delete
+    public function remove($user,$team)
+    {
+      $teamCreator = Team::select('creator')->find($team);
+
+      $TeamUser = TeamUser::where('user_id',$user)
+                              ->where('team_id',$team)
+                              ->first();
+      if($user == $teamCreator)
+      {
+        return back()->with('danger','لايمكن تغير حالة الادمن');
+      }
+
+      // Remove User
+      $TeamUser->delete();
+      return back()->withSuccess('تم');
+    }
+
+
     //
     public function checkCretor($request,$team){
       if($request->creator != $team->creator)
@@ -133,4 +172,6 @@ class TeamsController extends Controller
         ]);
       }
     }
+
+
 }

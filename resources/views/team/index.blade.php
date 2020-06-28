@@ -1,72 +1,89 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-  <h2 class="text-center">
-    أنشاء فريق
-     <i class="fa fa-plus"></i> </h2>
+  <h3 class="text-center">
+    فرقي
+    <i class="fa fa-object-group"></i>
+  </h3>
   <hr />
+
+@if( ! is_null($UserTeam) )
+<div class="item">
+  <h4><a href="{{ route('showTeam',$UserTeam->id) }}">
+    {{$UserTeam->name}} <i class="fa fa-link"></i> </a></h4>
+    <hr />
+    <!-- check if he The Manger -->
+    @if($UserTeam->creator == $user->id)
+    <a href="{{ route('Team.show',$UserTeam->id) }}" class=" join-btn btn btn-success">
+      أدراة المجموعه
+      <i class="fa fa-shield-alt"></i>
+    </a>
+    @else
+    <!-- check approve status --->
+
+      @if($UserTeam->pivot->approved)
+      <a href="{{ route('leaveTeam') }}" class="confirm join-btn btn btn-danger">
+        الخروج من المجموعه
+        <i class="fa fa-door-open"></i>
+      </a>
+      @else
+      <a href="{{ route('leaveTeam') }}" class="confirm join-btn btn btn-danger">
+        الغاء الطلب
+        <i class="fa fa-door-open"></i>
+      </a>
+      @endif
+
+    @endif
   <h5>
-    قم بانشاء فريق وتحيقيق اعلي النقاط مع اصدقائك
+    {{$UserTeam->ApprovedUsers->sum('points') }}
+    نقطة
   </h5>
-  <hr />
 </div>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">أنشاء فريق جديد</div>
+@else
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('Team.store') }}">
-                        @csrf
+  <a href="{{route('Teams')}}">
+لم تنضم لفرق بعد يمكن الانضمام من هنا
+  </a>
 
-                        <div class="form-group row">
-                          <label for="name" class="col-md-4 col-form-label text-md-right">اسم الفريق</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="name" class="col-md-4 col-form-label text-md-right">الاصدقاء</label>
-
-                            <div class="col-md-6">
-                                <select multiple class="form-control" name="users[]">
-                                  @foreach($users as $user)
-                                    <option
-                                    value="{{$user->id}}"
-                                    @if(old('users'))
-                                      @if(in_array($user->id,old('users')))
-                                      selected
-                                      @endif
-                                    @endif
-                                    >
-                                    {{$user->name}}</option>
-                                  @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <hr />
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                  أنشاء
-                                </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+@endif
 </div>
 
 @endsection
+@push('js')
+  <script type="text/javascript">
+    $(document).on('click','.confirm', function (e){
+
+      return confirm('تاكيد ؟');
+
+    });
+  </script>
+@endpush
+@push('css')
+  <style>
+  .item {
+    position: relative;
+    text-align: right;
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 2px 2px 10px #eee, -2px -2px 10px #eee;
+  }
+   .item:hover {
+    transition: all ease .5s;
+    box-shadow: 2px 2px 30px #eee, -2px -2px 30px #eee;
+  }
+   .item .join-btn{
+    position: absolute;
+    left: 20px;
+    top: 12px;
+    color: #fff;
+    box-shadow: 2px 2px 10px #eee, -2px -2px 10px #eee;
+  }
+   .item a{
+    text-decoration: none;
+    color:#000
+  }
+  </style>
+@endpush

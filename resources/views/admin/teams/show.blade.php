@@ -23,6 +23,7 @@
         <td>العضو</td>
         <td>النقاط</td>
         <td>الحاله</td>
+        <td>##</td>
       </tr>
     </thead>
     <tbody>
@@ -47,6 +48,28 @@
             <i
             title="بانتظار الموافقة"
             class="fa fa-close text-danger"></i>
+            @endif
+          @endif
+        <td>
+          @if($team->creator != $user->id)
+
+            @if($user->pivot->approved)
+            <a href="{{ route('admin.team.remove',[$user->id,$team->id]) }}" class="confirm btn btn-danger">
+              طرد
+              <i
+              class="fa fa-close text-light"></i>
+            </a>
+            @else
+            <a href="{{ route('admin.team.approve',[$user->id,$team->id]) }}" class="confirm btn btn-info">
+              قبول
+              <i
+              class="fa fa-check text-light"></i>
+            </a>
+            <a href="{{ route('admin.team.remove',[$user->id,$team->id]) }}" class="confirm btn btn-danger">
+            رفض
+              <i
+              class="fa fa-check text-light"></i>
+            </a>
             @endif
           @endif
         </td>
@@ -114,5 +137,16 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+
+$(document).on('click','.confirm',function (e){
+
+  if(confirm('تاكيد ؟'))
+  {
+    return true;
+  }
+  return false;
+});
+
 </script>
 @endpush

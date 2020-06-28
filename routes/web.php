@@ -33,5 +33,9 @@ Route::group(['middleware' => 'auth:web'],function (){
   // Teams
   Route::resource('Team','TeamController');
   // Join Teams
-  Route::get('joinTeam/{id}','JoinTeamController@join')->name('joinTeam');
+  Route::get('joinTeam/{id}','ControlTeamController@join')->name('joinTeam');
+  Route::get('leaveTeam','ControlTeamController@leave')->name('leaveTeam');
+  // AdminRemoveUser
+  Route::get('AdminapproveUser/{user}/{team}','ControlTeamController@approve')->name('Adminapprove');
+  Route::get('AdminRemoveUser/{user}/{team}','ControlTeamController@removeuser')->name('AdminRemoveUser');
 });

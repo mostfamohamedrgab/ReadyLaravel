@@ -26,6 +26,7 @@
                 <td>#</td>
                 <td>  الاسم</td>
                 <td>  القسم  </td>
+                <td>  نوع التحدي  </td>
                 <td>  عدد المجتازين  </td>
                 <td>اضيف في  </td>
                 <td>اجراء<td>
@@ -37,6 +38,15 @@
               <tr>
                 <td>{{$challenge->id}}</td>
                 <td>{{$challenge->name}}</td>
+                <td>
+                  @if($challenge->type == 'teams')
+                    للفرق
+                  @elseif($challenge->type == 'users')
+                    الاعضاء
+                  @else
+                    عام
+                  @endif
+                </td>
                 <td>{{$challenge->cat->name}}</td>
                 <td>{{$challenge->sloves->count() }}</td>
 

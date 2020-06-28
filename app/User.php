@@ -58,6 +58,7 @@ class User extends Authenticatable
         TeamUser::class
       )->withpivot('approved');
     }
+
     // the team that the user In
     public function TeamsJoined(){
       return $this->hasMany(TeamUser::class);
@@ -65,5 +66,10 @@ class User extends Authenticatable
 
     public function sloves(){
       return $this->hasMany(Slove::class);
+    }
+
+    // manger in team
+    public function creatorTeam(){
+      return $this->hasOne(Team::class,'creator');
     }
 }

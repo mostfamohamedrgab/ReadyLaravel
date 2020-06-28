@@ -75,6 +75,25 @@
     @endif
 
     <div class="form-group">
+      <label >نوع التحدي </label>
+      <select style="text-align:right;direction:rtl" class="form-control" required name="type">
+        @php
+          $types = [
+            'teams' => 'فرق',
+            'users' => 'الاعضاء',
+            'public' => 'عام'
+          ]
+        @endphp
+        @foreach($types as $value => $type)
+        <option style="text-align:right"
+        value="{{$value}}"
+        {{$challenge->type == $value ? 'selected' : ''}}
+        >{{$type}}</option>
+        @endforeach
+      </select>
+    </div>
+
+    <div class="form-group">
       <label >
         القيمه الصحيحه
       </label>

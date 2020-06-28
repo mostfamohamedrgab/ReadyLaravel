@@ -50,6 +50,7 @@ class ChallengesController extends Controller
             'value' => 'required|min:1',
             'points' => 'required|min:1',
             'end_at' => 'required|min:1',
+            'type' => 'required|min:1'
         ]);
 
 
@@ -109,6 +110,7 @@ class ChallengesController extends Controller
             'value' => 'required|min:1',
             'points' => 'required|min:1',
             'end_at' => 'required|min:1',
+            'type' => 'required|min:1'
         ]);
 
         $data['file'] = $challenge->file;

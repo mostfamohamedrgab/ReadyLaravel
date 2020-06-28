@@ -20,6 +20,7 @@ class ChallengesController extends Controller
         return view('pages.challenges', compact('cats','challenges'));
     }
     // Logic
+    // ** check status teams , users !!
     // 1 => approve Challange_id
     // 2 => check if user Sloved
     // 3 => get Challange points and value
@@ -30,7 +31,40 @@ class ChallengesController extends Controller
     {
         $challenge_id = $request->challenge_id;
         // false if he send fa  ce challnege_id
-        Challenge::findOrFail($challenge_id);
+        $challenge = Challenge::findOrFail($challenge_id);
+
+        // 1 check status
+        // team
+        // check if he has a team
+        // check if there is any one form this team slove it before
+        $userTeam = auth()->user()->Teams;
+        if($challenge->type == 'teams')
+        {
+            // check if user has a team
+            if(!$userTeam->count())
+            {
+              return $this->goBack('info','عفوا الاختبار مخصص للفرق فقط');
+            }
+
+            // check if any one form team slove it
+            $teamUsers = $userTeam->first()->users->pluck('id');
+            $sloveCount = Slove::whereIn('user_id', $teamUsers)
+                   ->where('challenge_id',$challenge->id)
+                   ->count();
+             if($sloveCount)
+             {
+               return $this->goBack('info','قام صديق لك بحل الاختبار سابقا');
+             }
+        }
+        // 2 user
+        // check if he dosnt has any teams
+        if($challenge->type == 'users')
+        {
+            if($userTeam->count())
+            {
+              return $this->goBack('info',"معذره التحدي للاعضاء بدون فريق");
+            }
+        }
 
         $data = $request->validate([
           'value' => 'required',
@@ -53,7 +87,7 @@ class ChallengesController extends Controller
         {
           return $this->goBack('danger','القيمة غير صحيحة !');
         }
-    
+
         $user =   auth()->user();
         // add points to user
         User::where('id',$user->id)->update([

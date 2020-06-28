@@ -88,6 +88,11 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                <a  class="nav-link " href="{{ route('Team.index') }}" >
+                                     فرقي <i class="fab fa-teamspeak"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a  class="nav-link " href="{{ route('Team.create') }}" >
                                     أنشاء فريق <i class="fa fa-layer-group"></i>
                                 </a>

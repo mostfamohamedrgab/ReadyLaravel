@@ -46,6 +46,13 @@ class TeamsController extends Controller
           'creator' => 'required'
         ]);
 
+        // check if he joined to team already
+        $userTeam = TeamUser::where('user_id', $request->creator)->count();
+        if($userTeam)
+        {
+            return back()->with('info','العضو موجود في فريق سابقا ');
+        }
+
         $team = Team::create($data);
 
         TeamUser::create([
@@ -90,6 +97,14 @@ class TeamsController extends Controller
     public function update(Request $request, $id)
     {
       $team = Team::findOrFail($id);
+
+      // check if he joined to team already
+      $userTeam = TeamUser::where('user_id', $request->creator)->count();
+      
+      if($userTeam)
+      {
+          return back()->with('info','العضو موجود في فريق سابقا ');
+      }
 
       $this->checkCretor($request,$team);
 

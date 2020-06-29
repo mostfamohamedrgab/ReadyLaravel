@@ -17,6 +17,9 @@ Route::group([
   Route::resource('Admins','AdminsController');
   // users
   Route::resource('Users','UsersController');
+    Route::get('ApproveUser/{user}','UsersController@approve')->name('users.approve');
+    Route::get('AisApproveUser/{user}','UsersController@disapprove')->name('users.disapprove');
+    Route::get('ZeroPoints','UsersController@zeropoints')->name('users.zeropoints');
   // Teams
   Route::resource('Teams','TeamsController');
   Route::get('Team/Remove/{user}/{team}','TeamsController@remove')->name('team.remove');

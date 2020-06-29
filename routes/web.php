@@ -22,6 +22,12 @@ Route::resource('Users','UsersController');
 // Teams
 Route::get('Teams','TeamsController@index')->name('Teams');
 Route::get('Teams/{Team}','TeamsController@show')->name('showTeam');
+// News
+Route::get('News','NewsController@index')->name('news');
+Route::get('News/{id}','NewsController@show')->name('new');
+//Contact
+Route::get('Contact','ContactController@show')->name('contact');
+Route::post('Contact','ContactController@store')->name('contact');
 /*********************************************/
 // Protected By [Auth] MiddleWare  ***********/
 /*********************************************/

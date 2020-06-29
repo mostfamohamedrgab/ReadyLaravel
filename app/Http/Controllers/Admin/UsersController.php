@@ -37,7 +37,7 @@ class UsersController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function store(Request $request)
-  { 
+  {
 
       $data = $request->validate([
         'name' => 'required|min:2|max:100',
@@ -87,6 +87,7 @@ class UsersController extends Controller
 
       $data = $request->validate([
         'name' => 'required|min:2|max:100',
+        'points' => 'required',
         'email' => 'required|email|unique:users,email,'.$user->id,
         'password' => 'sometimes|nullable|min:8|max:20'
       ]);
@@ -110,10 +111,36 @@ class UsersController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function destroy($id)
-  { 
+  {
       $user = User::findOrFail($id);
       $user->delete();
 
       return back()->with('info','تم ...');
+  }
+
+  // approve emailp
+  public function approve($id)
+  {
+    User::where('id',$id)->update([
+      'email_verified_at' => date('y-m-d h-m-s')
+    ]);
+    return back()->withSuccess('تم');
+  }
+  // disapprove emailp
+  public function disapprove($id)
+  {
+    User::where('id',$id)->update([
+      'email_verified_at' => null
+    ]);
+    return back()->withSuccess('تم');
+  }
+  // Zero Points For All User
+  public function zeropoints(){
+
+    User::where('points','!=',0)->update([
+      'points' => 0
+    ]);
+
+    return back()->withSuccess('تم');
   }
 }

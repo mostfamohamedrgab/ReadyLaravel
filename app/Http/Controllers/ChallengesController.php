@@ -58,7 +58,7 @@ class ChallengesController extends Controller
         }
         // 2 user
         // check if he dosnt has any teams
-        if($challenge->type == 'users')
+        if($challenge->type != 'teams')
         {
             if($userTeam->count())
             {

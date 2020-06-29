@@ -10,5 +10,125 @@
   background: url('https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   background-size:cover;
   background-position: 100%;
+  height: 500px !important;
 }
 /** end sliders**/
+/*** start service ***/
+.service {
+    background: var(--scound-color);
+    padding: 40px 0;
+}
+.service .card  {
+    margin:10px 0;
+}
+.service .section-title {
+    color:#000;
+}
+.service .section-title:after
+{
+ background:#fff;
+}
+.service .card .card-text {
+    line-height: 2;
+    color: var(--main-color);
+}
+.service .card .card-body {
+    box-shadow:none;
+    min-height: 250px;
+}
+.service .card .card-body:hover
+{
+     transition:all ease .5s;
+    box-shadow:3px 3px 20px #eee,-3px -3px 20px #eee
+}
+
+.service .card svg {
+   font-size: 45px;
+    color: var(--scound-color);
+}
+
+@media(max-width: 750px)
+{
+
+    .service .card {
+        width:80%;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    .service .card .card-body {
+        min-height: 150px;
+    }
+}
+.service .row .col-md-6:nth-of-type(4) .card-body ,
+.service .row .col-md-6:nth-of-type(5) .card-body
+{
+    min-height: 200px;
+}
+/** end service ****/
+/*** start goals **/
+.goals {
+    margin:40px 0;
+}
+.section-title {
+    margin-bottom: 40px;
+    position: relative;
+    color: var(--main-color);
+}
+.section-title:after {
+    content: "";
+    position: absolute;
+    width: 20%;
+    bottom: -8px;
+    height: 1px;
+    background:var(--scound-color);
+    left: 40%;
+}
+.goals .card .card-body {
+    min-height: 200px;
+    box-shadow:none
+}
+
+.goals .card .card-body:hover {
+    transition:all ease .5s;
+    box-shadow:8px 8px 20px #eee,-8px -8px 20px #eee
+}
+
+
+@media(max-width: 750px)
+{
+    .logo-parent p {
+        font-size: smaller;
+        left:20%;
+        top:75%
+    }
+    .goals .card {
+        width:80%;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    .goals .card .card-body {
+        min-height: 150px;
+    }
+}
+.goals .card svg {
+    font-size: 50px;
+    color: var(--main-color)
+}
+
+.goals .card .card-text {
+    line-height: 2;
+    color:green
+}
+/*** end  goals **//*** start goals **/
+.news {
+  background: #fff;
+  padding: 30px 0;
+}
+
+.show-news {
+  display: block;
+  width: 20%;
+  margin: auto;
+}

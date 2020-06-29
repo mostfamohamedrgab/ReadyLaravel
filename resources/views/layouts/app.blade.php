@@ -58,6 +58,17 @@
                     <ul class="navbar-nav ml-auto">
                       <!-- start Gloval links --->
                       <li class="nav-item">
+                          <a class="nav-link" href="{{ route('contact') }}">اتصل بنا
+                            <i class="fab fa-facebook-messenger"></i>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('news') }}">
+                            اخر الاخبار
+                            <i class="fa fa-bullseye"></i>
+                          </a>
+                      </li>
+                      <li class="nav-item">
                           <a class="nav-link" href="{{ route('Teams') }}">الفرق
                             <i class="fa fa-object-group"></i>
                           </a>

@@ -6,7 +6,7 @@
         <section class="content-header">
           <h1 >
             لوحه التحكم
-            / 
+            /
             الاعضاء
           </h1>
 
@@ -15,6 +15,15 @@
             اضافه عضو
           <i class="fa fa-users"></i>
           </button>
+
+          <div style="clear:both"></div>
+          <hr style="margin:5px 0;border-color:#fff"/>
+          <a  style="margin-bottom: 20px;display:block; float: right;" href="{{ route('admin.users.zeropoints') }}" class="delete btn btn-danger">
+              تصفير النقاط
+          <i class="fa fa-close"></i>
+        </a>
+        <div style="clear:both"></div>
+
           </section>
           @include('layouts.msgs')
         <!-- Main content -->
@@ -26,6 +35,7 @@
           <td>#</td>
           <td>الاسم</td>
           <td>الايميل</td>
+          <td>النقاط</td>
           <td>
             حاله الحساب
           </td>
@@ -38,11 +48,16 @@
           <td>{{$user->id}}</td>
           <td>{{$user->name}}</td>
           <td>{{$user->email}}</td>
+          <td>{{$user->points}}</td>
           <td>
             @if($user->email_verified_at)
-              <i class="fa fa-check text-success"></i>
+              <a href="{{ route('admin.users.disapprove',$user->id) }}" title="الغاء التاكيد">
+                <i class="fa fa-check text-success"></i>
+              </a>
             @else
+            <a href="{{ route('admin.users.approve',$user->id) }}" title="تاكيد">
               <i class="fa fa-close text-danger"></i>
+            </a>
             @endif
           </td>
 
@@ -88,6 +103,11 @@
                 <div class="form-group">
                   <label>الايميل</label>
                   <input type="email" class="form-control"  value="{{ $user->email }}" required name="email">
+                </div>
+
+                <div class="form-group">
+                  <label>النقاط</label>
+                  <input type="number" class="form-control"  value="{{ $user->points }}" required name="points">
                 </div>
 
                 <div class="form-group">
@@ -153,7 +173,7 @@
         text-align: right !important
       }
       form input {
-        text-align: right !important        
+        text-align: right !important
       }
   </style>
 @endpush

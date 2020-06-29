@@ -25,13 +25,13 @@
     <div class="form-group">
       <label >صوره الخبر
         <small class="text-info">| في حال تركها فارغه لن تتغير</small>
-        <img id="blah" src="{{asset('storage/imgs/'.$new->image)}}"
+        <img id="blah" src="{{asset('public/storage/imgs/'.$new->image)}}"
             style="width:70px;height:70px;border-radius:50%;margin:10px" />
       </label>
       <input id="imgInp" type="file" accept="image/*" class="form-control" name="image" >
     </div>
 
-  
+
 
     <div class="form-group">
       <label >وصف قصير <small class="text-info">| اختياري</small></label>

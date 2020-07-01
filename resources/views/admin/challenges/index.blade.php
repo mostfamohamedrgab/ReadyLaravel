@@ -20,16 +20,16 @@
         <!-- Main content -->
         <section class="content">
 
-          <table class="table">
+          <table id="example" class="display" style="width:100%">
             <thead>
               <tr >
-                <td>#</td>
-                <td>  الاسم</td>
-                <td>  القسم  </td>
-                <td>  نوع التحدي  </td>
-                <td>  عدد المجتازين  </td>
-                <td>اضيف في  </td>
-                <td>اجراء<td>
+                <th>#</th>
+                <th>  الاسم</th>
+                <th>  القسم  </th>
+                <th>  نوع التحدي  </th>
+                <th>  عدد المجتازين  </th>
+                <th>اضيف في  </th>
+                <th>اجراء</th>
 
               </tr>
             </thead>

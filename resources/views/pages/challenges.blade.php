@@ -25,12 +25,9 @@
           @if($challenge->type == 'teams')
             <i class="fa fa-object-group"></i>
             فرق
-          @elseif($challenge->type == 'users')
+          @else
             <i class="fa fa-users"></i>
             اعضاء
-          @else
-            <i class="fa fa-globe"></i>
-            عام
           @endif
         </div>
       </a>
@@ -47,8 +44,9 @@
           </div>
           <div class="modal-body">
             <p>المطلوب </p>
-            {!! $challenge->content !!} <hr/>
+            {!! $challenge->content !!}
             @if($challenge->file)
+             <hr/>
               <a
               style="color:#fff"
               href="{{asset('public/storage/files/'. $challenge->file)}}"
@@ -56,18 +54,20 @@
                 >
                 الاطلاع علي الملف
               </a>
-              <hr />
             @endif
           </div>
           <div class="modal-footer">
-          <form action="{{ route('challenges.slove') }}" method="post">
+          <form class="form-challnegs" action="{{ route('challenges.slove') }}" method="post">
+            <div
+            style="display:none"
+            class="alert alert-info msg"></div>
             @csrf
+            @if(auth()->user())
             <div class="form-group">
               <label for="value">القيمة الصحيحة</label>
-              <input type="text" name="value" required="required" class="form-control" id="value">
+              <input type="text" name="value" required="required" class="input-value form-control" >
             </div>
             <!--- check if user login -->
-            @if(auth()->user())
               <!-- check if user verification -->
               @if(auth()->user()->email_verified_at)
 
@@ -113,6 +113,37 @@
   <script>
   $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
-    })
+  });
+
+  // prevent Form And Send Data By Ajax
+  $(document).ready( function (){
+
+
+
+    $('.form-challnegs').on('submit', function (e){
+      e.preventDefault();
+
+      var form = $(this);
+      var formData = form.serialize();
+
+      $.ajax({
+        method: form.attr('method'),
+        url: form.attr('action'),
+        data: formData,
+        accepts: "application/json",
+        success: function (res){
+          // append the result messge
+          form.children('.msg')
+          .css('display','block')
+          .html(res);
+          // reset input value
+        $('input[name=value').val('');
+        }
+      });
+
+    }); // end Form Func
+
+  });
+
   </script>
 @endpush

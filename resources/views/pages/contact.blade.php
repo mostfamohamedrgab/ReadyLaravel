@@ -17,42 +17,7 @@
   </div>
 
   <div class="container">
-    <div class="contact-icon">
-      <div class="row">
-        <div class="col-md-3 text-center">
-          <a href="#">
-            <i class="fa fa-map-marker"></i>
-          </a>
-          <p>
-            حقل نصي يمكن تغيره ,
-            حقل نصي يمكن تغيره ,
-            حقل نصي يمكن تغيره ,
-
-          </p>
-        </div>
-
-        <div class="col-md-3 text-center">
-          <a href="#">
-            <i class="fa fa-mail-bulk"></i>
-          </a>
-          <p>serdabio@gmail.com</p>
-        </div>
-
-        <div class="col-md-3 text-center">
-          <a href="#">
-            <i class="fa fa-phone"></i>
-          </a>
-          <p>+90 123 458 9632 1478</p>
-        </div>
-
-        <div class="col-md-3 text-center">
-          <a href="#">
-            <i class="fa fa-mobile"></i>
-          </a>
-          <p>+90 111 33356 97746</p>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="contact-form">
       <form method="post" action="{{ route('contact') }}">

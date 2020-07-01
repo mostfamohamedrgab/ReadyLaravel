@@ -29,17 +29,17 @@
         <!-- Main content -->
         <section class="content">
 
-    <table class="table">
+  <table id="example" class="display" style="width:100%">
       <thead>
         <tr >
-          <td>#</td>
-          <td>الاسم</td>
-          <td>الايميل</td>
-          <td>النقاط</td>
-          <td>
+          <th>#</th>
+          <th>الاسم</th>
+          <th>الايميل</th>
+          <th>النقاط</th>
+          <th>
             حاله الحساب
-          </td>
-          <td>اجراء<td>
+          </th>
+          <th>اجراء</th>
         </tr>
       </thead>
       <tbody>

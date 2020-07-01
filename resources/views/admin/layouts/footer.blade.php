@@ -12,8 +12,17 @@
            immediately after the control sidebar -->
 
     </div><!-- ./wrapper -->
-    
+
+
     <script src="{{ asset('public/admin/dist/js/jq.min.js') }}" ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+      });
+    </script>
+
     <!-- jQuery 2.1.4 -->
    <link rel="stylesheet" href="{{ asset('public/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}"></script>
     <!-- Bootstrap 3.3.4 -->
@@ -35,8 +44,8 @@
     <script src="{{ asset('public/admin/dist/js/pages/dashboard2.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('public/admin/dist/js/demo.js') }}"></script>
-    
-  
+
+
 
     @stack('js')
   </body>

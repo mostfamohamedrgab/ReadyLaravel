@@ -17,14 +17,14 @@
         <!-- Main content -->
         <section class="content">
 
-          <table class="table">
+          <table id="example" class="display" style="width:100%">
             <thead>
               <tr >
-                <td>#</td>
-                <td>عنوان الخبر</td>
-                <td>وصف قصير<td>
-                <td>صوره الخبر</td>
-                <td>اجراء<td>
+                <th>#</th>
+                <th>عنوان الخبر</th>
+                <th>وصف قصير<th>
+                <th>صوره الخبر</th>
+                <th>اجراء</th>
               </tr>
             </thead>
             <tbody>

@@ -57,32 +57,18 @@
 
                     <ul class="navbar-nav ml-auto">
                       <!-- start Gloval links --->
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('contact') }}">اتصل بنا
-                            <i class="fab fa-facebook-messenger"></i>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('news') }}">
-                            اخر الاخبار
-                            <i class="fa fa-bullseye"></i>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('Teams') }}">الفرق
-                            <i class="fa fa-object-group"></i>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('Users.index') }}">الاعضاء
-                            <i class="fa fa-users"></i>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ route('challenges.view') }}">التحديات
-                            <i class="fas fa-tasks"></i>
-                          </a>
-                      </li>
+                      <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          الصحفات
+                          </button>
+                          <div class="text-center dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="{{ route('challenges.view') }}">التحديات</a>
+                              <a class="dropdown-item" href="{{ route('Users.index') }}">الاعضاء</a>
+                              <a class="dropdown-item" href="{{ route('Teams') }}">الفرق</a>
+                              <a class="dropdown-item" href="{{ route('news') }}">اخر الاخبار</a>
+                              <a class="dropdown-item" href="{{ route('contact') }}">اتصل بنا</a>
+                            </div>
+                          </div>
                       <!--- end Gloval Links -->
                         @guest
                             <li class="nav-item">
@@ -98,21 +84,20 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a  class="nav-link " href="{{ route('Team.index') }}" >
-                                     فرقي <i class="fab fa-teamspeak"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a  class="nav-link " href="{{ route('Team.create') }}" >
-                                    أنشاء فريق <i class="fa fa-layer-group"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a  class="nav-link " href="{{ route('User.index') }}" >
-                                    {{ Auth::user()->name }} <i class="fa fa-user"></i>
-                                </a>
-                            </li>
+
+                        <div class="dropdown" style="margin-left:10px">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{ Auth::user()->name }} <i class="fa fa-user"></i>
+                            </button>
+                            <div class="text-center dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ route('User.index') }}">  صفحتي <i class="fa fa-user"></i></a>
+                                <a class="dropdown-item" href="{{ route('Team.index') }}">     فريقي <i class="fab fa-teamspeak"></i></a>
+                                <a class="dropdown-item" href="{{ route('Team.create') }}">
+                                  أنشاء فرق
+                                  <i class="fab fa-teamspeak"></i></a>
+                              </div>
+                            </div>
+
                             <li class="nav-item dropdown">
                               <a class="nav-link" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();

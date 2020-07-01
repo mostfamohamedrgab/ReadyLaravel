@@ -29,6 +29,7 @@ class ChallengesController extends Controller
     // 6 => add this operation to slove
     public function slove(Request $request)
     {
+      
         $challenge_id = $request->challenge_id;
         // false if he send fa  ce challnege_id
         $challenge = Challenge::findOrFail($challenge_id);
@@ -43,7 +44,7 @@ class ChallengesController extends Controller
             // check if user has a team
             if(!$userTeam->count())
             {
-              return $this->goBack('info','عفوا الاختبار مخصص للفرق فقط');
+              return \response()->json('عفوا الاختبار مخصص للفرق فقط');
             }
 
             // check if any one form team slove it
@@ -53,7 +54,7 @@ class ChallengesController extends Controller
                    ->count();
              if($sloveCount)
              {
-               return $this->goBack('info','قام صديق لك بحل الاختبار سابقا');
+               return \response()->json('قام صديق لك بحل الاختبار سابقا');
              }
         }
         // 2 user
@@ -62,21 +63,15 @@ class ChallengesController extends Controller
         {
             if($userTeam->count())
             {
-              return $this->goBack('info',"معذره التحدي للاعضاء بدون فريق");
+              return \response()->json("معذره التحدي للاعضاء بدون فريق");
             }
         }
 
-        $data = $request->validate([
-          'value' => 'required',
-          'challenge_id' => 'required'
-        ],[
-          'value.required' => 'القيمه الصحيحة مطلوبه',
-          'value.challenge_id' =>  'رمز مفقود !'
-        ]);
+
         /** Check If User Sloved Challange Before **/
         if($this->isSloved($challenge_id))
         {
-          return $this->goBack('danger','لقد قمت بحل التحدي من قبل !!');
+          return \response()->json('لقد قمت بحل التحدي من قبل !!');
         }
         // get chllange point
         $challenge =  Challenge::select('id','points','value')
@@ -85,7 +80,7 @@ class ChallengesController extends Controller
         // Compare Challange Value With Input ()
         if($request->value != $challenge->value )
         {
-          return $this->goBack('danger','القيمة غير صحيحة !');
+          return \response()->json('القيمة غير صحيحة !');
         }
 
         $user =   auth()->user();
@@ -99,7 +94,7 @@ class ChallengesController extends Controller
           'user_id' => $user->id
         ]);
         // back with suucess operation
-        return $this->goBack('success',
+        return  \response()->json(
         'مبروك تم أضافه '.$challenge->points.' نقطه بنجاح');
     }
 

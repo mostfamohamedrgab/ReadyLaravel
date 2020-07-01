@@ -5,8 +5,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1 >
-            لوحة التحكم 
-            / 
+            لوحة التحكم
+            /
             الاقسام
           </h1>
 
@@ -20,12 +20,12 @@
         <!-- Main content -->
         <section class="content">
 
-    <table class="table">
+    <table id="example" class="display" style="width:100%">
       <thead>
         <tr >
-          <td>#</td>
-          <td>الاسم</td>
-          <td>اجراء<td>
+          <th>#</th>
+          <th>الاسم</th>
+          <th>اجراء</th>
         </tr>
       </thead>
       <tbody>
@@ -107,7 +107,7 @@
               <label>الاسم</label>
               <input type="text" class="form-control" required name="name" value="{{old('name')}}">
             </div>
-        
+
             <button type="submit" class="btn btn-primary">حفظ</button>
       </form>
 

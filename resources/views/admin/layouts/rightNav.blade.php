@@ -69,7 +69,7 @@
     <li>
       <a href="{{ route('admin.Pages.index') }}">
         <i class="fa fa-sitemap"></i> <span>
-         الصحفات
+         الصفحات
         </span>
         <small class="label pull-right bg-yellow">
           {{ App\Page::count() }}
@@ -82,6 +82,16 @@
         <i class="fa fa-newspaper-o"></i> <span>الاخبار</span>
         <small class="label pull-right bg-yellow">
           {{ App\News::count() }}
+        </small>
+
+      </a>
+    </li>
+
+    <li>
+      <a href="{{ route('admin.Ads.index') }}">
+        <i class="fa fa-bookmark"></i> <span>الاعلانات</span>
+        <small class="label pull-right bg-yellow">
+          {{ App\Ad::count() }}
         </small>
 
       </a>

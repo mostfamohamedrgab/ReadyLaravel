@@ -14,15 +14,15 @@
         <!-- Main content -->
         <section class="content">
 
-    <table class="table">
+    <table id="example" class="display" style="width:100%">
       <thead>
         <tr>
-          <td scope="col">#</td>
-          <td scope="col">الاسم</td>
-          <td scope="col">الايميل</td>
-          
-          <td scope="col">الرساله</td>
-          <td scope="col">اجراء</td>
+          <th scope="col">#</th>
+          <th scope="col">الاسم</th>
+          <th scope="col">الايميل</th>
+
+          <th scope="col">الرساله</th>
+          <th scope="col">اجراء</th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +31,7 @@
           <td scope="row">{{$msg->id}}</td>
           <td>{{$msg->name}}</td>
           <td>{{$msg->email}}</td>
-          
+
           <td>{{$msg->msg}}</td>
           <td>
             <form

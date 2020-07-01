@@ -20,14 +20,14 @@
         <!-- Main content -->
         <section class="content">
 
-          <table class="table">
+          <table id="example" class="display" style="width:100%">
             <thead>
               <tr >
-                <td>#</td>
-                <td>
+                <th>#</th>
+                <th>
                   عنوان الصفحه
-                 </td>
-                <td>اجراء<td>
+                </th>
+                <th>اجراء</th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
               <tr>
                 <td>{{$page->id}}</td>
                 <td>{{$page->title}}</td>
-               
+
                 <td>
 
                 <a class="btn btn-info" href="{{ route('admin.Pages.show',$page->id) }}">

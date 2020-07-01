@@ -24,7 +24,7 @@
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
               @php
-                $msgs = App\Contact::all();
+                $msgs = App\Contact::Where('is_read','0')->get();
               @endphp
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

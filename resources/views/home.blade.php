@@ -11,51 +11,25 @@
 <section class="service" id="Service">
 <div class="container">
 
-  <h2 class="text-center section-title">سرداب </h2>
+  <h2 class="text-center ">الاعلانات </h2>
 
   <div class="row">
-
+    @foreach($ads as $ad)
     <div class="col-md-4 col-sm-12">
       <div class="card text-center">
         <div class="card-body">
           <h5 class="card-title">
-            <i class="fas fa-door-open"></i>
+            {!! $ad->icon !!}
           </h5>
+          <h3 class="card-title">{{$ad->title}}</h3>
           <p class="card-text">
-          قم بتسجيل حساب وتجميع اعلي النقاط
-          يقوم النظام بالعمل علي اعلي نظم الحماية لحفظ البينات وضمان عدم
-          الغش او التلاعب
+        {{$ad->description}}
           </p>
         </div>
       </div>
     </div>
+    @endforeach
 
-    <div class="col-md-4 col-sm-12">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="fa fa-users"></i>
-          </h5>
-          <p class="card-text">
-            قم بتجميع فريق من اصدقائك ودعوتهم للعلب في الفريق الخاص
-            بك لكي تجمع اعلي النقاط وتتصدر لوحه الشرف الخاصه بالفرق
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-12">
-      <div class="card text-center">
-        <div class="card-body">
-          <h5 class="card-title">
-            <i class="fas fa-chart-line"></i>
-          </h5>
-          <p class="card-text">
-            شارك في احلي اكبر عدد من التحديات واثبت مهاراتك لجميع الاعبين
-          </p>
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>
@@ -82,19 +56,12 @@
           </div>
           @endforeach
       </div>
-      <hr />
-      <a href="{{ route('news') }}" class="show-news btn btn-primary">عرض الاخبار</a>
   </div>
 </section>
 <hr />
 <p class="text-center">
   جميع الحقوق حفوظه &reg; سرداب
-  2020 - {{date('y-m-d')}}
-  |
-  تصميم وبرمجه
-  <a href="#">
-    مصطفي
-  </a>
+  2020
 </p>
 <!-- end goals -->
 @endsection

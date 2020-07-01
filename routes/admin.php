@@ -35,4 +35,7 @@ Route::group([
    // Contacts
   Route::get('Contacts','ContactsController@index')->name('Contact');
   Route::delete('Contacts/{id}','ContactsController@destroy')->name('Contact.destroy');
+
+  // Ads
+  Route::resource('Ads','AdsController');
 });

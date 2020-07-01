@@ -5,9 +5,13 @@
     <title>لوحة التحكم</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- dataTable -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <!-- Bootstrap 3.3.4 -->
     <link rel="stylesheet" href="{{ asset('public/admin/bootstrap/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{asset('public/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/admin/dist/css/all.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('public/admin/dist/css/ionicons.css')}}">
